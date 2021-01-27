@@ -15,15 +15,11 @@ class FakeCoursesRepository implements ICoursesRepository {
 
     this.courses.push(course);
 
-    console.log(course, 'Create Course');
-
     return course;
   }
 
   public async findById(id: string): Promise<Course | undefined> {
     const filteredCourse = this.courses.find(course => course.id === id);
-
-    console.log(filteredCourse, 'Find Course');
 
     return filteredCourse;
   }
