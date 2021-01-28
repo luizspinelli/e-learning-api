@@ -37,6 +37,10 @@ class FakeCoursesRepository implements ICoursesRepository {
 
     return course;
   }
+
+  public async list(): Promise<Course[]> {
+    return this.courses;
+  }
 }
 
 export default FakeCoursesRepository;

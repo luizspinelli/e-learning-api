@@ -1,9 +1,18 @@
 import CreateCourseService from '@modules/courses/services/CreateCourseService';
+import ListAllCoursesService from '@modules/courses/services/ListAllCoursesService';
 import UpdateCourseService from '@modules/courses/services/UpdateCourseService';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 export default class CoursesController {
+  public async index(request: Request, response: Response): Promise<Response> {
+    const listCourses = container.resolve(ListAllCoursesService);
+
+    const courses = await listCourses.execute();
+
+    return response.json(courses);
+  }
+
   public async create(request: Request, response: Response): Promise<Response> {
     const data = request.body;
 
